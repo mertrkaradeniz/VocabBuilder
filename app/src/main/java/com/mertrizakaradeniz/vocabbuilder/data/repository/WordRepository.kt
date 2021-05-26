@@ -1,5 +1,6 @@
 package com.mertrizakaradeniz.vocabbuilder.data.repository
 
+import androidx.lifecycle.LiveData
 import com.mertrizakaradeniz.vocabbuilder.data.local.WordDao
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import javax.inject.Inject
@@ -19,4 +20,8 @@ class WordRepository @Inject constructor(
     suspend fun deleteWord(word: Word) = wordDao.deleteWord(word)
 
     suspend fun deleteAll() = wordDao.deleteAll()
+
+    fun getAllMemorizedWords() = wordDao.getAllMemorizedWords()
+
+    fun checkWordIsMemorized(name: String) = wordDao.checkWordIsMemorized(name)
 }

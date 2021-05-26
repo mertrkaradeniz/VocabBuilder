@@ -15,6 +15,6 @@ data class Word(
     val synonyms: String?,
     val antonyms: String?,
     val exampleSentence: String?,
-    val memorize: Boolean = false
+    val is_memorize: Boolean = false
 ) : Parcelable
 

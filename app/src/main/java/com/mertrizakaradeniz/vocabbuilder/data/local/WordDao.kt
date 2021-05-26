@@ -7,10 +7,10 @@ import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 @Dao
 interface WordDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun upsertWord(word: Word)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addAllWords(list: List<Word>)
 
     @Query("SELECT * FROM words ORDER BY name DESC")
@@ -24,5 +24,11 @@ interface WordDao {
 
     @Query("DELETE FROM words")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM words WHERE is_memorize = :isMemorize")
+    fun getAllMemorizedWords(isMemorize: Boolean = true): LiveData<List<Word>>
+
+    @Query("SELECT * FROM words WHERE name = :name and is_memorize = :isMemorize")
+    fun checkWordIsMemorized(name: String, isMemorize: Boolean = true): LiveData<List<Word>>
 
 }
