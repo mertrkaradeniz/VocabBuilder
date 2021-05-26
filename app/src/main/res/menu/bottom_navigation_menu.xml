@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/wordListFragment"
+        android:icon="@drawable/ic_dictionary"
+        android:title="@string/dictionary" />
+
+    <item
+        android:id="@+id/memorizeWordFragment"
+        android:icon="@drawable/ic_memorize"
+        android:title="@string/memorize" />
+
+    <item
+        android:id="@+id/wordQuizFragment"
+        android:icon="@drawable/ic_quiz"
+        android:title="@string/quiz" />
+</menu>

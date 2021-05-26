@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/wordListFragment">
+
+    <fragment
+        android:id="@+id/wordListFragment"
+        android:name="com.mertrizakaradeniz.vocabbuilder.ui.list.WordListFragment"
+        android:label="Vocabulary"
+        tools:layout="@layout/fragment_word_list" >
+        <action
+            android:id="@+id/action_wordListFragment_to_wordDetailFragment"
+            app:destination="@id/wordDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordDetailFragment"
+        android:name="com.mertrizakaradeniz.vocabbuilder.ui.detail.WordDetailFragment"
+        android:label="Word Detail"
+        tools:layout="@layout/fragment_word_detail" >
+        <argument
+            android:name="Word"
+            app:argType="com.mertrizakaradeniz.vocabbuilder.data.model.Word" />
+    </fragment>
+    <fragment
+        android:id="@+id/memorizeWordFragment"
+        android:name="com.mertrizakaradeniz.vocabbuilder.ui.memorize.MemorizeWordFragment"
+        android:label="Memorize"
+        tools:layout="@layout/fragment_memorize_word" >
+        <action
+            android:id="@+id/action_memorizeWordFragment_to_wordDetailFragment"
+            app:destination="@id/wordDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordQuizFragment"
+        android:name="com.mertrizakaradeniz.vocabbuilder.ui.quiz.WordQuizFragment"
+        android:label="Word Quiz"
+        tools:layout="@layout/fragment_word_quiz" />
+</navigation>
