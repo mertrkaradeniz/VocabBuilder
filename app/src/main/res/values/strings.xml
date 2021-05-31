@@ -16,4 +16,6 @@
         <item>Adjectives</item>
         <item>Phrases and Idioms</item>
     </string-array>
+
+    <string name="first_time">first_time</string>
 </resources>

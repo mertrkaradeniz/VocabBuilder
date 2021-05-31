@@ -1,5 +1,7 @@
 package com.mertrizakaradeniz.vocabbuilder.ui.list
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -20,6 +22,7 @@ class WordListFragment : Fragment(R.layout.fragment_word_list) {
     private val binding get() = _binding!!
     private lateinit var wordAdapter: WordListAdapter
     private val viewModel: WordViewModel by viewModels()
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +35,25 @@ class WordListFragment : Fragment(R.layout.fragment_word_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+        setupSharedPref()
         setupRecyclerView()
         handleClickEvent()
         setupObservers()
     }
 
+    private fun setupSharedPref() {
+        sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with(sharedPref.edit()) {
+            putBoolean(getString(R.string.first_time), true)
+            apply()
+        }
+    }
+
     private fun setupObservers() {
-        viewModel.addAllWords(wordList)
+        if (sharedPref.getBoolean(getString(R.string.first_time), true)) {
+            viewModel.addAllWords(wordList)
+            sharedPref.edit().putBoolean(getString(R.string.first_time), false).apply()
+        }
         viewModel.getAllWords.observe(requireActivity(), { words ->
             wordAdapter.words = words
         })
