@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -29,6 +30,7 @@ class WordListFragment : Fragment(R.layout.fragment_word_list) {
     private lateinit var wordAdapter: WordListAdapter
     private val viewModel: WordViewModel by viewModels()
     private lateinit var sharedPref: SharedPreferences
+    private var isFirstTime: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,16 +52,13 @@ class WordListFragment : Fragment(R.layout.fragment_word_list) {
 
     private fun setupSharedPref() {
         sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        with(sharedPref.edit()) {
-            putBoolean(getString(R.string.first_time), true)
-            apply()
-        }
+        isFirstTime = sharedPref.getBoolean(getString(R.string.first_time), true)
     }
 
     private fun setupObservers() {
-        if (sharedPref.getBoolean(getString(R.string.first_time), true)) {
-            viewModel.addAllWords(wordList)
+        if (isFirstTime) {
             sharedPref.edit().putBoolean(getString(R.string.first_time), false).apply()
+            viewModel.addAllWords(wordList)
         }
         viewModel.getAllWords.observe(requireActivity(), { words ->
             wordAdapter.words = words
