@@ -5,14 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import coil.load
 import com.mertrizakaradeniz.vocabbuilder.R
+import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.databinding.FragmentWordDetailBinding
+import com.mertrizakaradeniz.vocabbuilder.ui.list.WordViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class WordDetailFragment : Fragment(R.layout.fragment_word_detail) {
 
     private var _binding: FragmentWordDetailBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: WordViewModel by viewModels()
+    private lateinit var word: Word
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +27,36 @@ class WordDetailFragment : Fragment(R.layout.fragment_word_detail) {
     ): View {
         _binding = FragmentWordDetailBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        word = arguments?.get("word") as Word
+        populateUI()
+        handleClickEvent()
+    }
+
+    private fun handleClickEvent() {
+        binding.btnMemorize.setOnClickListener {
+            word.is_memorize = true
+            viewModel.upsertWord(word)
+        }
+    }
+
+    private fun populateUI() {
+        binding.apply {
+            "Word: ${word.name}".also { tvName.text = it }
+            "Definition: ${word.definition}".also { tvDefinition.text = it }
+            "Categories: ${word.categories}".also { tvCategories.text = it }
+            "Sentence: ${word.exampleSentence}".also { tvSentence.text = it }
+            "Antonyms: ${word.antonyms}".also { tvAntonyms.text = it }
+            "Synonyms: ${word.synonyms}".also { tvSynonyms.text = it }
+
+            imgReminder.load(word.imgUrl) {
+                crossfade(true)
+                crossfade(1000)
+            }
+        }
     }
 
     override fun onDestroyView() {

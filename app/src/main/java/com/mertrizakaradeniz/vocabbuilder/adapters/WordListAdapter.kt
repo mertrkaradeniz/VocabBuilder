@@ -1,5 +1,6 @@
 package com.mertrizakaradeniz.vocabbuilder.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.databinding.WordItemBinding
 import com.mertrizakaradeniz.vocabbuilder.ui.list.WordListFragmentDirections
@@ -44,23 +46,18 @@ class WordListAdapter : RecyclerView.Adapter<WordListAdapter.ViewHolder>() {
         val currentWord = words[position]
 
         holder.binding.apply {
-            tvName.text = currentWord.name
-            tvDefinition.text = currentWord.definition
-            tvCategories.text = currentWord.categories
-            tvSentence.text = currentWord.exampleSentence
-            tvAntonyms.text = currentWord.antonyms
-            tvSynonyms.text = currentWord.synonyms
-
-            imgReminder.load(currentWord.imgUrl) {
-                crossfade(true)
-                crossfade(1000)
-            }
+            tvName.text = "Word: ${currentWord.name}"
+            tvCategories.text = "Categories: ${currentWord.categories}"
         }
 
         holder.itemView.setOnClickListener { mView ->
-            val direction =
-                WordListFragmentDirections.actionWordListFragmentToWordDetailFragment(currentWord)
-            mView.findNavController().navigate(direction)
+            val bundle = Bundle().apply {
+                putParcelable("word", currentWord)
+            }
+            mView.findNavController().navigate(
+                R.id.action_wordListFragment_to_wordDetailFragment,
+                bundle
+            )
         }
     }
 

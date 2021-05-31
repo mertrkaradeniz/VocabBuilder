@@ -12,10 +12,10 @@ data class Word(
     val name: String,
     val categories: String,
     val definition: String,
+    val exampleSentence: String,
     val synonyms: String?,
     val antonyms: String?,
-    val exampleSentence: String?,
-    val imgUrl: String?,
-    val is_memorize: Boolean = false
+    val imgUrl: String? = null,
+    var is_memorize: Boolean = false
 ) : Parcelable
 

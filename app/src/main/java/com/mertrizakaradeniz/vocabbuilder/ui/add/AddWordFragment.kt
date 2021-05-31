@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mertrizakaradeniz.vocabbuilder.R
+import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.databinding.FragmentAddWordBinding
 import com.mertrizakaradeniz.vocabbuilder.ui.list.WordViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +22,7 @@ class AddWordFragment : Fragment(R.layout.fragment_add_word) {
     private var _binding: FragmentAddWordBinding? = null
     private val binding get() = _binding!!
     private val viewModel: WordViewModel by viewModels()
+    private lateinit var word: Word
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +36,34 @@ class AddWordFragment : Fragment(R.layout.fragment_add_word) {
         super.onViewCreated(view, savedInstanceState)
         setupSpinner()
         binding.btnAdd.setOnClickListener {
-
+            binding.apply {
+                val name = etWord.text.toString()
+                val definition = etDefinition.text.toString()
+                val sentence = etSentence.text.toString()
+                if (name.isNotEmpty() && definition.isNotEmpty() && sentence.isNotEmpty()) {
+                    word = Word(
+                        name,
+                        spCategories.selectedItem.toString(),
+                        definition,
+                        sentence,
+                        etSynonyms.text.toString(),
+                        etAntonyms.text.toString(),
+                    )
+                    viewModel.upsertWord(word)
+                    Toast.makeText(
+                        requireContext(),
+                        "Word is saved successfully.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(AddWordFragmentDirections.actionAddWordFragmentToWordListFragment())
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Name, definition, sentence cannot be empty.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
     }
 
@@ -58,7 +89,6 @@ class AddWordFragment : Fragment(R.layout.fragment_add_word) {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
-
         }
     }
 

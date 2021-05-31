@@ -4,77 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:elevation="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgReminder"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:visibility="gone"
-            tools:visibility="visible"
-            tools:src="@drawable/ic_launcher_background"/>
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Get"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:textSize="30sp"
+            android:textAlignment="textStart"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvDefinition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategories"
-            tools:text="come to have (something); receive" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Word: Get" />
 
         <TextView
             android:id="@+id/tvCategories"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:layout_marginBottom="8dp"
+            android:textSize="18sp"
+            android:textAlignment="textStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvName"
-            tools:text="VERB" />
-
-        <TextView
-            android:id="@+id/tvSentence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDefinition"
-            tools:text="I got a letter from him the other day" />
-
-        <TextView
-            android:id="@+id/tvSynonyms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSentence"
-            tools:text="synonyms" />
-
-        <TextView
-            android:id="@+id/tvAntonyms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSynonyms"
-            tools:text="antonyms" />
+            tools:text="Categories: VERB" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

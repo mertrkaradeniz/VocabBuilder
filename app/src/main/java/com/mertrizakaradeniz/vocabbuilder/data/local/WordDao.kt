@@ -7,10 +7,10 @@ import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 @Dao
 interface WordDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertWord(word: Word)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAllWords(list: List<Word>)
 
     @Query("SELECT * FROM words ORDER BY name DESC")
