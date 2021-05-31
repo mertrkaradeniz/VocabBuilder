@@ -3,4 +3,17 @@
     <string name="dictionary">Dictionary</string>
     <string name="memorize">Memorize</string>
     <string name="quiz">Quiz</string>
+    <string name="add">Add</string>
+    <string name="word">Word</string>
+    <string name="definition">Definition</string>
+    <string name="sentence">Sentence</string>
+    <string name="synonyms">Synonyms</string>
+    <string name="antonyms">Antonyms</string>
+
+    <string-array name="categories">
+        <item>Verbs</item>
+        <item>Adverbs</item>
+        <item>Adjectives</item>
+        <item>Phrases and Idioms</item>
+    </string-array>
 </resources>

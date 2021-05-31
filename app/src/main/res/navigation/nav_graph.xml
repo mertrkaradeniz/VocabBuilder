@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_wordListFragment_to_wordDetailFragment"
             app:destination="@id/wordDetailFragment" />
+        <action
+            android:id="@+id/action_wordListFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment" />
     </fragment>
     <fragment
         android:id="@+id/wordDetailFragment"
@@ -37,4 +40,9 @@
         android:name="com.mertrizakaradeniz.vocabbuilder.ui.quiz.WordQuizFragment"
         android:label="Word Quiz"
         tools:layout="@layout/fragment_word_quiz" />
+    <fragment
+        android:id="@+id/addWordFragment"
+        android:name="com.mertrizakaradeniz.vocabbuilder.ui.add.AddWordFragment"
+        android:label="Add Word"
+        tools:layout="@layout/fragment_add_word" />
 </navigation>
