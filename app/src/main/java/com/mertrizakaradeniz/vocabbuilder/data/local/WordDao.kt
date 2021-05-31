@@ -10,7 +10,7 @@ interface WordDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertWord(word: Word)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addAllWords(list: List<Word>)
 
     @Query("SELECT * FROM words ORDER BY name DESC")

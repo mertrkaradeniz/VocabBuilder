@@ -1,12 +1,14 @@
 package com.mertrizakaradeniz.vocabbuilder.ui.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.databinding.FragmentWordDetailBinding
@@ -20,6 +22,7 @@ class WordDetailFragment : Fragment(R.layout.fragment_word_detail) {
     private val binding get() = _binding!!
     private val viewModel: WordViewModel by viewModels()
     private lateinit var word: Word
+    private var isMemorize: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,14 +35,51 @@ class WordDetailFragment : Fragment(R.layout.fragment_word_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         word = arguments?.get("word") as Word
+        setupObservers()
         populateUI()
+    }
+
+    private fun setupObservers() {
+        viewModel.checkWordIsMemorized(word.name).observe(viewLifecycleOwner) { list ->
+            list?.let {
+                isMemorize = list.isNotEmpty()
+                setupButton()
+            }
+        }
+    }
+
+    private fun setupButton() {
+        if (isMemorize) {
+            "Done/Memorized".also { binding.btnMemorize.text = it }
+        } else {
+            "Cancel/Remind Later".also { binding.btnMemorize.text = it }
+        }
         handleClickEvent()
     }
 
     private fun handleClickEvent() {
         binding.btnMemorize.setOnClickListener {
-            word.is_memorize = true
-            viewModel.upsertWord(word)
+            if (isMemorize) {
+                word.is_memorize = false
+                isMemorize = false
+                viewModel.upsertWord(word)
+                Snackbar.make(
+                    binding.root,
+                    "Word removed successfully in memorize",
+                    Snackbar.LENGTH_SHORT
+                )
+                    .show()
+            } else {
+                word.is_memorize = true
+                isMemorize = true
+                viewModel.upsertWord(word)
+                Snackbar.make(
+                    binding.root,
+                    "Word added memorize successfully",
+                    Snackbar.LENGTH_SHORT
+                )
+                    .show()
+            }
         }
     }
 
@@ -56,6 +96,7 @@ class WordDetailFragment : Fragment(R.layout.fragment_word_detail) {
                 crossfade(true)
                 crossfade(1000)
             }
+
         }
     }
 

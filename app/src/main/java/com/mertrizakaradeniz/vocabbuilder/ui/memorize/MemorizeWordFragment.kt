@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.adapters.WordListAdapter
@@ -32,6 +33,26 @@ class MemorizeWordFragment : Fragment(R.layout.fragment_memorize_word) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        handleClickEvent()
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.getAllMemorizedWords.observe(requireActivity(), { memorizedWords ->
+            wordAdapter.words = memorizedWords
+        })
+    }
+
+    private fun handleClickEvent() {
+        wordAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putParcelable("word", it)
+            }
+            findNavController().navigate(
+                R.id.action_memorizeWordFragment_to_wordDetailFragment,
+                bundle
+            )
+        }
     }
 
     private fun setupRecyclerView() {
@@ -41,9 +62,6 @@ class MemorizeWordFragment : Fragment(R.layout.fragment_memorize_word) {
             setHasFixedSize(true)
             adapter = wordAdapter
         }
-        viewModel.getAllMemorizedWords.observe(requireActivity(), { memorizedWords ->
-            wordAdapter.words = memorizedWords
-        })
     }
 
     override fun onDestroyView() {

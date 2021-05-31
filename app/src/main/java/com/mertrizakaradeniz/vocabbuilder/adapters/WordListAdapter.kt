@@ -46,22 +46,20 @@ class WordListAdapter : RecyclerView.Adapter<WordListAdapter.ViewHolder>() {
         val currentWord = words[position]
 
         holder.binding.apply {
-            tvName.text = "Word: ${currentWord.name}"
-            tvCategories.text = "Categories: ${currentWord.categories}"
-        }
+            "Word: ${currentWord.name}".also { tvName.text = it }
+            "Categories: ${currentWord.categories}".also { tvCategories.text = it }
 
-        holder.itemView.setOnClickListener { mView ->
-            val bundle = Bundle().apply {
-                putParcelable("word", currentWord)
+            root.setOnClickListener {
+                onItemClickListener?.let { it(currentWord) }
             }
-            mView.findNavController().navigate(
-                R.id.action_wordListFragment_to_wordDetailFragment,
-                bundle
-            )
         }
     }
 
     override fun getItemCount() = words.size
 
+    private var onItemClickListener: ((Word) -> Unit)? = null
 
+    fun setOnItemClickListener(listener: (Word) -> Unit) {
+        onItemClickListener = listener
+    }
 }
