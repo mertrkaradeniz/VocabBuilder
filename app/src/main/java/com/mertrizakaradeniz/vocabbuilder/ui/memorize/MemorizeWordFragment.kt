@@ -38,7 +38,6 @@ class MemorizeWordFragment : Fragment(R.layout.fragment_memorize_word) {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMemorizeWordBinding.inflate(inflater, container, false)
-        createChannel("word_channel", "word")
         return binding.root
     }
 
@@ -51,7 +50,6 @@ class MemorizeWordFragment : Fragment(R.layout.fragment_memorize_word) {
 
     private fun setupButton() {
         setupSharedPref()
-        Log.d("SAAS", remind.toString())
         if (remind) {
             binding.btnReminder.text = getString(R.string.cancel_reminder)
         } else {
@@ -119,27 +117,6 @@ class MemorizeWordFragment : Fragment(R.layout.fragment_memorize_word) {
         super.onDestroyView()
         sharedPref.edit().putBoolean(getString(R.string.remind), remind).apply()
         _binding = null
-    }
-
-    private fun createChannel(channelId: String, channelName: String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel(
-                channelId,
-                channelName,
-                NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                setShowBadge(false)
-            }
-            notificationChannel.enableLights(true)
-            notificationChannel.lightColor = Color.RED
-            notificationChannel.enableVibration(true)
-            notificationChannel.description = "Word Reminder"
-
-            val notificationManager = requireActivity().getSystemService(
-                NotificationManager::class.java
-            )
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
     }
 
 }

@@ -8,7 +8,6 @@ import android.content.Intent
 import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mertrizakaradeniz.vocabbuilder.AlarmReceiver
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
@@ -35,19 +34,19 @@ class WordViewModel @Inject constructor(
     )
 
     fun setupNotification() {
-        alarmManager.setInexactRepeating(
-            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime() + 1000 * 30,
-            1000 * 30,
-            notifyPendingIntent
-        )
-
 //        alarmManager.setInexactRepeating(
 //            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-//            SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_DAY,
-//            AlarmManager.INTERVAL_HALF_DAY,
+//            SystemClock.elapsedRealtime() + 1000 * 30,
+//            1000 * 30,
 //            notifyPendingIntent
 //        )
+
+        alarmManager.setInexactRepeating(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_DAY,
+            AlarmManager.INTERVAL_HALF_DAY,
+            notifyPendingIntent
+        )
 
 //        val calendar: Calendar = Calendar.getInstance().apply {
 //            timeInMillis = System.currentTimeMillis()
@@ -91,5 +90,4 @@ class WordViewModel @Inject constructor(
     fun checkWordIsMemorized(name: String): LiveData<List<Word>> {
         return repository.checkWordIsMemorized(name)
     }
-
 }
