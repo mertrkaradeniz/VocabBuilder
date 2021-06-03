@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,25 +73,30 @@ class MemorizeWordFragment : Fragment(R.layout.fragment_memorize_word) {
 
     private fun handleClickEvent() {
         binding.btnReminder.setOnClickListener {
-            if (remind) {
-                binding.btnReminder.text = getString(R.string.remind_me)
-                remind = false
-                viewModel.cancelNotification()
-                Snackbar.make(
-                    binding.root,
-                    "Reminder canceled successfully",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+            if (memorizeList.isNotEmpty()) {
+                if (remind) {
+                    binding.btnReminder.text = getString(R.string.remind_me)
+                    remind = false
+                    viewModel.cancelNotification()
+                    Snackbar.make(
+                        binding.root,
+                        "Reminder canceled successfully",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                } else {
+                    binding.btnReminder.text = getString(R.string.cancel_reminder)
+                    remind = true
+                    viewModel.setupNotification()
+                    Snackbar.make(
+                        binding.root,
+                        "Reminder set successfully(twice a day)",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
             } else {
-                binding.btnReminder.text = getString(R.string.cancel_reminder)
-                remind = true
-                viewModel.setupNotification()
-                Snackbar.make(
-                    binding.root,
-                    "Reminder set successfully(twice a day)",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                Toast.makeText(requireContext(), "Please add words to memorize!", Toast.LENGTH_SHORT).show()
             }
+
         }
 
         wordAdapter.setOnItemClickListener {

@@ -28,7 +28,6 @@ class QuizFragment : Fragment(R.layout.fragment_quiz), View.OnClickListener {
     private var _binding: FragmentQuizBinding? = null
     private val binding get() = _binding!!
     private val viewModel: WordViewModel by viewModels()
-
     private lateinit var categories: String
     private lateinit var name: String
     private lateinit var wordList: List<Word>
