@@ -34,7 +34,7 @@ class AddWordFragment : Fragment(R.layout.fragment_add_word) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupSpinner()
+        //setupSpinner()
         binding.btnAdd.setOnClickListener {
             binding.apply {
                 val name = etWord.text.toString()

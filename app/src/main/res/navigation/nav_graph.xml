@@ -39,7 +39,11 @@
         android:id="@+id/wordQuizFragment"
         android:name="com.mertrizakaradeniz.vocabbuilder.ui.quiz.WordQuizFragment"
         android:label="Word Quiz"
-        tools:layout="@layout/fragment_word_quiz" />
+        tools:layout="@layout/fragment_word_quiz" >
+        <action
+            android:id="@+id/action_wordQuizFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addWordFragment"
         android:name="com.mertrizakaradeniz.vocabbuilder.ui.add.AddWordFragment"
@@ -49,4 +53,9 @@
             android:id="@+id/action_addWordFragment_to_wordListFragment"
             app:destination="@id/wordListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.mertrizakaradeniz.vocabbuilder.ui.quiz.QuizFragment"
+        android:label="Question 1"
+        tools:layout="@layout/fragment_quiz" />
 </navigation>

@@ -24,4 +24,10 @@
     <string name="notification_text">Memorize the words</string>
     <string name="remind_me">Remind me</string>
     <string name="cancel_reminder">Cancel reminder</string>
+    <string name="image">image</string>
+    <string name="submit">SUBMIT</string>
+    <string name="please_enter_your_name">Please enter your name.</string>
+    <string name="name">Name</string>
+    <string name="please_choose_quiz_categories">Please choose quiz categories.</string>
+    <string name="start">Start</string>
 </resources>

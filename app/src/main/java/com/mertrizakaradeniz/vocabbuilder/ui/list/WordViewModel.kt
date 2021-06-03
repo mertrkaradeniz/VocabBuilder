@@ -9,7 +9,7 @@ import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.mertrizakaradeniz.vocabbuilder.AlarmReceiver
+import com.mertrizakaradeniz.vocabbuilder.receiver.AlarmReceiver
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.data.repository.WordRepository
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.REQUEST_CODE

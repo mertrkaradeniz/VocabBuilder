@@ -1,4 +1,4 @@
-package com.mertrizakaradeniz.vocabbuilder
+package com.mertrizakaradeniz.vocabbuilder.receiver
 
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
