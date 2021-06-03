@@ -1,12 +1,9 @@
 package com.mertrizakaradeniz.vocabbuilder.ui.list
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.adapters.WordListAdapter
-import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.databinding.FragmentWordListBinding
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.wordList
 import dagger.hilt.android.AndroidEntryPoint

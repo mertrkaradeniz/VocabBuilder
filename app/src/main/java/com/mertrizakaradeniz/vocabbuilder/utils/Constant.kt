@@ -5,6 +5,9 @@ import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 object Constant {
 
     const val DATABASE_NAME: String = "Word.db"
+    const val NOTIFICATION_ID = 0
+    const val REQUEST_CODE = 0
+    const val FLAGS = 0
 
     private val angry = Word(
         "angry",

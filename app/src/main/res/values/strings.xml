@@ -18,4 +18,10 @@
     </string-array>
 
     <string name="first_time">first_time</string>
+    <string name="remind">remind</string>
+    <string name="word_notification_channel_id" translatable="false">word_channel</string>
+    <string name="notification_title">Word Reminder</string>
+    <string name="notification_text">Memorize the words</string>
+    <string name="remind_me">Remind me</string>
+    <string name="cancel_reminder">Cancel reminder</string>
 </resources>
