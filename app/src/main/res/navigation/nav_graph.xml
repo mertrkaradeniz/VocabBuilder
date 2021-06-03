@@ -64,5 +64,17 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <action
+            android:id="@+id/action_quizFragment_to_quizResultFragment"
+            app:destination="@id/quizResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizResultFragment"
+        android:name="com.mertrizakaradeniz.vocabbuilder.ui.quiz.QuizResultFragment"
+        android:label="fragment_quiz_result"
+        tools:layout="@layout/fragment_quiz_result" >
+        <action
+            android:id="@+id/action_quizResultFragment_to_wordQuizFragment"
+            app:destination="@id/wordQuizFragment" />
     </fragment>
 </navigation>

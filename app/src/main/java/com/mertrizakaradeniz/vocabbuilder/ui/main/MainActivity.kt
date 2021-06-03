@@ -1,8 +1,10 @@
 package com.mertrizakaradeniz.vocabbuilder.ui.main
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -49,12 +51,20 @@ class MainActivity : AppCompatActivity() {
         )
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.quizFragment) {
-                binding.bottomNavigationView.visibility = View.GONE
-                supportActionBar?.hide()
-            } else {
-                binding.bottomNavigationView.visibility = View.VISIBLE
-                supportActionBar?.show()
+            when (destination.id) {
+                R.id.quizFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                    supportActionBar?.hide()
+                }
+                R.id.quizResultFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                    supportActionBar?.hide()
+                    makeFullScreen()
+                }
+                else -> {
+                    binding.bottomNavigationView.visibility = View.VISIBLE
+                    supportActionBar?.show()
+                }
             }
         }
 
@@ -62,4 +72,15 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
     }
 
+    private fun makeFullScreen() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+    }
 }

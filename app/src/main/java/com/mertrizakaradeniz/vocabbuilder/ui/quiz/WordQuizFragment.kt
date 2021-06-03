@@ -33,7 +33,7 @@ class WordQuizFragment : Fragment(R.layout.fragment_word_quiz) {
 
     private fun handleClickEvent() {
         binding.btnStart.setOnClickListener {
-            //if (binding.etName.text.toString().isNotEmpty()) {
+            if (binding.etName.text.toString().isNotEmpty()) {
                 val bundle = Bundle().apply {
                     putString(NAME, binding.etName.text.toString())
                     putString(CATEGORIES, binding.spCategories.selectedItem.toString())
@@ -42,9 +42,9 @@ class WordQuizFragment : Fragment(R.layout.fragment_word_quiz) {
                     R.id.action_wordQuizFragment_to_quizFragment,
                     bundle
                 )
-            /*} else {
+            } else {
                 Toast.makeText(requireContext(), "Please enter your name!", Toast.LENGTH_SHORT).show()
-            }*/
+            }
 
         }
     }

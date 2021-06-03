@@ -30,4 +30,8 @@
     <string name="name">Name</string>
     <string name="please_choose_quiz_categories">Please choose quiz categories.</string>
     <string name="start">Start</string>
+    <string name="hey_congratulations">Hey, Congratulations!</string>
+    <string name="finish">FINISH</string>
+    <string name="go_to_next_question">GO TO NEXT QUESTION</string>
+    <string name="word_quiz_result">Word Quiz Result</string>
 </resources>

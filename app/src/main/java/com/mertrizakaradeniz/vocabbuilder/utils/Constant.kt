@@ -5,11 +5,12 @@ import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 object Constant {
 
     const val DATABASE_NAME: String = "Word.db"
-    const val NOTIFICATION_ID = 0
-    const val REQUEST_CODE = 0
-    const val FLAGS = 0
-    const val CATEGORIES = "categories"
-    const val NAME = "name"
+    const val NOTIFICATION_ID: Int = 0
+    const val REQUEST_CODE: Int = 0
+    const val CATEGORIES: String = "categories"
+    const val NAME: String = "name"
+    const val TOTAL_QUESTIONS: String = "total_questions"
+    const val CORRECT_ANSWERS: String = "correct_answers"
 
     private val angry = Word(
         "angry",
