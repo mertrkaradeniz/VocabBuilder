@@ -8,6 +8,8 @@ object Constant {
     const val NOTIFICATION_ID = 0
     const val REQUEST_CODE = 0
     const val FLAGS = 0
+    const val CATEGORIES = "categories"
+    const val NAME = "name"
 
     private val angry = Word(
         "angry",

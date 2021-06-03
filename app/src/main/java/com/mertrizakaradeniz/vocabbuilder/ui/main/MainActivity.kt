@@ -3,6 +3,7 @@ package com.mertrizakaradeniz.vocabbuilder.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -48,14 +49,17 @@ class MainActivity : AppCompatActivity() {
         )
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.getId() == R.id.quizFragment) {
+            if (destination.id == R.id.quizFragment) {
                 binding.bottomNavigationView.visibility = View.GONE
+                supportActionBar?.hide()
             } else {
                 binding.bottomNavigationView.visibility = View.VISIBLE
+                supportActionBar?.show()
             }
         }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationView.setupWithNavController(navController)
     }
+
 }

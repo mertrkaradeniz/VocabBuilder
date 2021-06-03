@@ -31,4 +31,6 @@ interface WordDao {
     @Query("SELECT * FROM words WHERE name = :name and is_memorize = :isMemorize")
     fun checkWordIsMemorized(name: String, isMemorize: Boolean = true): LiveData<List<Word>>
 
+    @Query("SELECT * FROM words WHERE categories = :categories")
+    fun getWordsByCategories(categories: String ): LiveData<List<Word>>
 }

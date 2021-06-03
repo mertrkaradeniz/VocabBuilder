@@ -90,4 +90,8 @@ class WordViewModel @Inject constructor(
     fun checkWordIsMemorized(name: String): LiveData<List<Word>> {
         return repository.checkWordIsMemorized(name)
     }
+
+    fun getWordsByCategories(categories: String): LiveData<List<Word>> {
+        return repository.getWordsByCategories(categories)
+    }
 }

@@ -23,5 +23,7 @@ class WordRepository @Inject constructor(
 
     fun getAllMemorizedWords() = wordDao.getAllMemorizedWords()
 
+    fun getWordsByCategories(categories: String) = wordDao.getWordsByCategories(categories)
+
     fun checkWordIsMemorized(name: String) = wordDao.checkWordIsMemorized(name)
 }
