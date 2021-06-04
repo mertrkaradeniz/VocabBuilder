@@ -75,17 +75,17 @@ class WordViewModel @Inject constructor(
         repository.addAllWords(list)
     }
 
-    fun searchWords(searchQuery: String): LiveData<List<Word>> {
-        return repository.searchWords(searchQuery)
-    }
+//    fun searchWords(searchQuery: String): LiveData<List<Word>> {
+//        return repository.searchWords(searchQuery)
+//    }
 
     fun deleteWord(word: Word) = viewModelScope.launch {
         repository.deleteWord(word)
     }
 
-    fun deleteAll() = viewModelScope.launch {
-        repository.deleteAll()
-    }
+//    fun deleteAll() = viewModelScope.launch {
+//        repository.deleteAll()
+//    }
 
     fun checkWordIsMemorized(name: String): LiveData<List<Word>> {
         return repository.checkWordIsMemorized(name)

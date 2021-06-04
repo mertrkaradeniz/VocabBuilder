@@ -19,6 +19,7 @@ import com.mertrizakaradeniz.vocabbuilder.ui.list.WordViewModel
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.CATEGORIES
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.CORRECT_ANSWERS
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.NAME
+import com.mertrizakaradeniz.vocabbuilder.utils.Constant.QUESTION_COUNT
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.TOTAL_QUESTIONS
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,7 +40,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz), View.OnClickListener {
     private var currentPosition: Int = 1
     private var selectedOptionPosition: Int = 0
     private var correctAnswers: Int = 0
-    private val questionCount = 10
+    private var questionCount = 0
     private var question = "Which of the following words means "
 
     override fun onCreateView(
@@ -148,9 +149,9 @@ class QuizFragment : Fragment(R.layout.fragment_quiz), View.OnClickListener {
     }
 
     private fun setQuestion() {
+
         val question = questionsList[currentPosition - 1]
         defaultOptionsView()
-
         binding.apply {
             if (currentPosition == questionsList.size) {
                 binding.btnSubmit.text = getString(R.string.finish)
@@ -158,7 +159,8 @@ class QuizFragment : Fragment(R.layout.fragment_quiz), View.OnClickListener {
                 binding.btnSubmit.text = getString(R.string.submit)
             }
             pbQuestion.progress = currentPosition
-            ("$currentPosition" + "/" + pbQuestion.max).also { tvProgress.text = it }
+            pbQuestion.max = questionCount
+            ("$currentPosition/$questionCount").also { tvProgress.text = it }
             tvQuestion.text = question.question
             //imgQuestion.setImageResource(question.image)
             tvOptionOne.text = question.optionOne
@@ -199,6 +201,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz), View.OnClickListener {
     private fun getDataFromBundle() {
         categories = arguments?.getString(CATEGORIES, "").toString()
         name = arguments?.getString(NAME, "").toString()
+        questionCount = arguments?.getInt(QUESTION_COUNT, 0)!!
     }
 
     private fun answerView(answer: Int, drawableView: Int) {

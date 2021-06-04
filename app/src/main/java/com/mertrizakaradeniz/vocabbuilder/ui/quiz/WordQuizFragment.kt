@@ -1,7 +1,6 @@
 package com.mertrizakaradeniz.vocabbuilder.ui.quiz
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,9 @@ import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.databinding.FragmentWordQuizBinding
 import com.mertrizakaradeniz.vocabbuilder.ui.list.WordViewModel
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.CATEGORIES
+import com.mertrizakaradeniz.vocabbuilder.utils.Constant.MIN_QUIZ_QUESTION_COUNT
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.NAME
+import com.mertrizakaradeniz.vocabbuilder.utils.Constant.QUESTION_COUNT
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,8 +38,9 @@ class WordQuizFragment : Fragment(R.layout.fragment_word_quiz) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupCategoriesSpinner()
         handleClickEvent()
-        setupSpinner()
+        //setup()
     }
 
     private fun handleClickEvent() {
@@ -47,6 +49,7 @@ class WordQuizFragment : Fragment(R.layout.fragment_word_quiz) {
                 val bundle = Bundle().apply {
                     putString(NAME, binding.etName.text.toString())
                     putString(CATEGORIES, binding.spCategories.selectedItem.toString())
+                    putInt(QUESTION_COUNT, binding.spCount.selectedItem.toString().toInt())
                 }
                 findNavController().navigate(
                     R.id.action_wordQuizFragment_to_quizFragment,
@@ -59,7 +62,7 @@ class WordQuizFragment : Fragment(R.layout.fragment_word_quiz) {
         }
     }
 
-    private fun setupSpinner() {
+    private fun setupCategoriesSpinner() {
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.categories,
@@ -68,36 +71,68 @@ class WordQuizFragment : Fragment(R.layout.fragment_word_quiz) {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spCategories.adapter = adapter
         }
-        binding.spCategories.setSelection(-1)
-        binding.spCategories.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+        binding.spCategories.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) = handleSpinnerEvent(position)
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+    }
+
+    private fun setupQuestionCountSpinner() {
+        val countArray = ArrayList<String>()
+        for (i in MIN_QUIZ_QUESTION_COUNT..wordList.size) {
+            countArray.add(i.toString())
+        }
+        val arrayAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            countArray
+        )
+        binding.spCount.adapter = arrayAdapter
+
+    }
+
+    private fun handleSpinnerEvent(position: Int) {
+        viewModel.getWordsByCategories(binding.spCategories.selectedItem.toString())
+            .observe(viewLifecycleOwner) { list ->
+                wordList = list
                 if (position > 0) {
-                    viewModel.getWordsByCategories(binding.spCategories.selectedItem.toString())
-                        .observe(viewLifecycleOwner) { list ->
-                            wordList = list
-                            if (wordList.size >= 10) {
-                                binding.btnStart.isEnabled = true
-                            } else {
-                                binding.btnStart.isEnabled = false
-                                Toast.makeText(
-                                    requireContext(),
-                                    "There must be at least 10 words in this category",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
+                    setupQuestionCountSpinner()
+                    if (wordList.size >= MIN_QUIZ_QUESTION_COUNT) {
+                        showQuestionCount()
+                    } else {
+                        hideQuestionCount()
+                        Toast.makeText(
+                            requireContext(),
+                            "There must be at least 10 words in this category",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 } else if (position == 0) {
-                    binding.btnStart.isEnabled = false
+                    hideQuestionCount()
                 }
             }
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+    }
 
-            }
+    private fun showQuestionCount() {
+        binding.apply {
+            binding.btnStart.isEnabled = true
+            spCount.visibility = View.VISIBLE
+            tvQuestionCount.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideQuestionCount() {
+        binding.apply {
+            binding.btnStart.isEnabled = false
+            spCount.visibility = View.GONE
+            tvQuestionCount.visibility = View.GONE
         }
     }
 

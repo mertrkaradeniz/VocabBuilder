@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity(tableName = "words")
 data class Word(
-    @PrimaryKey()
+    @PrimaryKey
     val name: String,
     val categories: String,
     val definition: String,

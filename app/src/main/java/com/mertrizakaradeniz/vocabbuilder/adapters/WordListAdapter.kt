@@ -1,17 +1,12 @@
 package com.mertrizakaradeniz.vocabbuilder.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import com.mertrizakaradeniz.vocabbuilder.databinding.WordItemBinding
-import com.mertrizakaradeniz.vocabbuilder.ui.list.WordListFragmentDirections
 
 class WordListAdapter : RecyclerView.Adapter<WordListAdapter.ViewHolder>() {
 

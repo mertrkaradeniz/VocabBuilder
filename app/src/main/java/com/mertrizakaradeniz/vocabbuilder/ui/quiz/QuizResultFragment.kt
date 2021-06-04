@@ -12,7 +12,6 @@ import com.mertrizakaradeniz.vocabbuilder.utils.Constant.CORRECT_ANSWERS
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.NAME
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.TOTAL_QUESTIONS
 
-
 class QuizResultFragment : Fragment() {
 
     private var _binding: FragmentQuizResultBinding? = null

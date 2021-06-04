@@ -7,7 +7,9 @@ object Constant {
     const val DATABASE_NAME: String = "Word.db"
     const val NOTIFICATION_ID: Int = 0
     const val REQUEST_CODE: Int = 0
+    const val MIN_QUIZ_QUESTION_COUNT: Int = 10
     const val CATEGORIES: String = "categories"
+    const val QUESTION_COUNT: String = "question_count"
     const val NAME: String = "name"
     const val TOTAL_QUESTIONS: String = "total_questions"
     const val CORRECT_ANSWERS: String = "correct_answers"

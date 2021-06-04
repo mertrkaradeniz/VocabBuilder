@@ -1,6 +1,5 @@
 package com.mertrizakaradeniz.vocabbuilder.data.repository
 
-import androidx.lifecycle.LiveData
 import com.mertrizakaradeniz.vocabbuilder.data.local.WordDao
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
 import javax.inject.Inject
@@ -15,11 +14,11 @@ class WordRepository @Inject constructor(
 
     fun getAllWords() = wordDao.getAllWords()
 
-    fun searchWords(searchQuery: String) = wordDao.searchWords(searchQuery)
+//    fun searchWords(searchQuery: String) = wordDao.searchWords(searchQuery)
 
     suspend fun deleteWord(word: Word) = wordDao.deleteWord(word)
 
-    suspend fun deleteAll() = wordDao.deleteAll()
+//    suspend fun deleteAll() = wordDao.deleteAll()
 
     fun getAllMemorizedWords() = wordDao.getAllMemorizedWords()
 

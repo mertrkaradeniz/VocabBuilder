@@ -13,9 +13,9 @@
         android:id="@+id/tv_app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:layout_marginTop="36dp"
         android:text="@string/quiz"
         android:textSize="36sp"
         android:textStyle="bold" />
@@ -76,14 +76,34 @@
                 android:id="@+id/spCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/tvQuestionCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:padding="16dp" />
+                android:gravity="center"
+                android:text="@string/please_select_the_number_of_the_quiz_questions"
+                android:textColor="#7A8089"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <Spinner
+                android:id="@+id/spCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
             <Button
                 android:id="@+id/btn_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:enabled="false"
                 android:text="@string/start"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />

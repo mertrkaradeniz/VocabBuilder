@@ -34,7 +34,6 @@ class AddWordFragment : Fragment(R.layout.fragment_add_word) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //setupSpinner()
         binding.btnAdd.setOnClickListener {
             binding.apply {
                 val name = etWord.text.toString()
@@ -59,35 +58,10 @@ class AddWordFragment : Fragment(R.layout.fragment_add_word) {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Name, definition, sentence cannot be empty.",
+                        "Name, definition and sentence cannot be empty.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-            }
-        }
-    }
-
-    private fun setupSpinner() {
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.categories,
-            android.R.layout.simple_spinner_dropdown_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spCategories.adapter = adapter
-        }
-        binding.spCategories.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
             }
         }
     }

@@ -30,6 +30,7 @@
     <string name="please_enter_your_name">Please enter your name.</string>
     <string name="name">Name</string>
     <string name="please_choose_quiz_categories">Please choose quiz categories.</string>
+    <string name="please_select_the_number_of_the_quiz_questions">Please select the number of the quiz questions</string>
     <string name="start">Start</string>
     <string name="hey_congratulations">Hey, Congratulations!</string>
     <string name="finish">FINISH</string>
