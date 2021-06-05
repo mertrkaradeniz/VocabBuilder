@@ -1,5 +1,6 @@
 package com.mertrizakaradeniz.vocabbuilder.data.model
 
+import android.graphics.Bitmap
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -15,7 +16,6 @@ data class Word(
     val exampleSentence: String,
     val synonyms: String?,
     val antonyms: String?,
-    val imgUrl: String? = null,
     var is_memorize: Boolean = false
 ) : Parcelable
 

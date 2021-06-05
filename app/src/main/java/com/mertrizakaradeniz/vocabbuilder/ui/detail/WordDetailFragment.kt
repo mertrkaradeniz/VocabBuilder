@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.data.model.Word
@@ -90,12 +89,10 @@ class WordDetailFragment : Fragment(R.layout.fragment_word_detail) {
             "Sentence: ${word.exampleSentence}".also { tvSentence.text = it }
             "Antonyms: ${word.antonyms}".also { tvAntonyms.text = it }
             "Synonyms: ${word.synonyms}".also { tvSynonyms.text = it }
-
-            imgReminder.load(word.imgUrl) {
-                crossfade(true)
-                crossfade(1000)
-            }
-
+//            imgReminder.load(word.img) {
+//                crossfade(true)
+//                crossfade(1000)
+//            }
         }
     }
 

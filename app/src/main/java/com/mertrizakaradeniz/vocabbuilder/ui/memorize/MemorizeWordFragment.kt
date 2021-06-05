@@ -16,7 +16,7 @@ import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.adapters.WordListAdapter
 import com.mertrizakaradeniz.vocabbuilder.databinding.FragmentMemorizeWordBinding
 import com.mertrizakaradeniz.vocabbuilder.ui.list.WordViewModel
-import com.mertrizakaradeniz.vocabbuilder.utils.Data.memorizeList
+import com.mertrizakaradeniz.vocabbuilder.utils.Constant.memorizeList
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

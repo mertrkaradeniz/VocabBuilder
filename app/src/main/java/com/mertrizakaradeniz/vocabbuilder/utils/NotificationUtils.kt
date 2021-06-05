@@ -11,7 +11,7 @@ import androidx.navigation.NavDeepLinkBuilder
 import com.mertrizakaradeniz.vocabbuilder.R
 import com.mertrizakaradeniz.vocabbuilder.ui.main.MainActivity
 import com.mertrizakaradeniz.vocabbuilder.utils.Constant.NOTIFICATION_ID
-import com.mertrizakaradeniz.vocabbuilder.utils.Data.memorizeList
+import com.mertrizakaradeniz.vocabbuilder.utils.Constant.memorizeList
 
 fun NotificationManager.sendNotification(
     applicationContext: Context,
