@@ -195,6 +195,186 @@ object Constant {
         ""
     )
 
+    private val bravely = Word(
+        "bravely",
+        "Adverbs",
+        "in a way that shows a willingness to face and endure danger or pain; courageously",
+        "he has been hailed a hero after he bravely tackled a thief at a hotel",
+        "boldly",
+        "fearfully"
+    )
+
+    private val cheerfully = Word(
+        "cheerfully",
+        "Adverbs",
+        "in a cheerful way",
+        "he was whistling cheerfully",
+        "happily",
+        "sadly"
+    )
+
+    private val elegantly = Word(
+        "elegantly",
+        "Adverbs",
+        "in a graceful and stylish manner",
+        "a handsome, elegantly dressed businessman",
+        "gorgeously",
+        "dashingly"
+    )
+
+    private val faithfully = Word(
+        "faithfully",
+        "Adverbs",
+        "in a loyal manner",
+        "he swore that he would serve the king faithfully",
+        "accurate",
+        "disloyal"
+    )
+
+    private val fortunately = Word(
+        "fortunately",
+        "Adverbs",
+        "it is fortunate that",
+        "fortunately, no shots were fired and no one was hurt",
+        "blessedly",
+        "unfortunately"
+    )
+
+    private val honestly = Word(
+        "honestly",
+        "Adverbs",
+        "in a truthful, fair, or honourable way",
+        "he'd come by the money honestly",
+        "actually",
+        ""
+    )
+
+    private val kindly = Word(
+        "kindly",
+        "Adverbs",
+        "in a kind manner",
+        "‘Never mind,’ she said kindly",
+        "advantageous",
+        "atrocious"
+    )
+
+    private val perfectly = Word(
+        "perfectly",
+        "Adverbs",
+        "in a manner or way that could not be better",
+        "the ring fitted perfectly",
+        "faultlessly",
+        "amiss"
+    )
+
+    private val politely = Word(
+        "politely",
+        "Adverbs",
+        "in a respectful and considerate manner",
+        "he waited politely for me to ask questions",
+        "civilly",
+        "arrogantly"
+    )
+
+    private val safely = Word(
+        "safely",
+        "Adverbs",
+        "in a way that gives protection from danger or risk",
+        "there is a memento she keeps safely stored away",
+        "secure",
+        "dangerous"
+    )
+
+    private val TheBestOfBothWorlds = Word(
+        "The best of both worlds",
+        "Phrases and Idioms",
+        "you can enjoy two different opportunities at the same time",
+        "By working part-time and looking after her kids two days a week she managed to get the best of both worlds",
+        "",
+        ""
+    )
+
+    private val SpeakOfTheDevil = Word(
+        "Speak of the devil",
+        "Phrases and Idioms",
+        "the person you’re just talking about actually appears at that moment",
+        "Hi Tom, speak of the devil, I was just telling Sara about your new car",
+        "",
+        ""
+    )
+
+    private val SeeEyeToEye = Word(
+        "See eye to eye",
+        "Phrases and Idioms",
+        "agreeing with someone",
+        "They finally saw eye to eye on the business deal",
+        "",
+        ""
+    )
+
+    private val OnceInABlueMoon = Word(
+        "Once in a blue moon",
+        "Phrases and Idioms",
+        "an event that happens infrequently",
+        "I only go to the cinema once in a blue moon",
+        "",
+        ""
+    )
+
+    private val WhenPigsFly = Word(
+        "When pigs fly",
+        "Phrases and Idioms",
+        "something that will never happen",
+        "When pigs fly she’ll tidy up her room",
+        "",
+        ""
+    )
+
+    private val ToCostAnArmAndALeg = Word(
+        "To cost an arm and a leg",
+        "Phrases and Idioms",
+        "something is very expensive",
+        "Fuel these days costs and arm and a leg",
+        "",
+        ""
+    )
+
+    private val APieceOfCake = Word(
+        "A piece of cake",
+        "Phrases and Idioms",
+        "something is very easy",
+        "The English test was a piece of cake",
+        "",
+        ""
+    )
+
+    private val LetTheCatOutOfTheBag = Word(
+        "Let the cat out of the bag",
+        "Phrases and Idioms",
+        "to accidentally reveal a secret",
+        "I let the cat out of the bag about their wedding plans",
+        "",
+        ""
+    )
+
+    private val ToFeelUnderTheWeather = Word(
+        "To feel under the weather",
+        "Phrases and Idioms",
+        "to not feel well",
+        "I’m really feeling under the weather today; I have a terrible cold",
+        "",
+        ""
+    )
+
+    private val ToKillTwoBirdsWithOneStone = Word(
+        "To kill two birds with one stone",
+        "Phrases and Idioms",
+        "to solve two problems at once",
+        "By taking my dad on holiday, I killed two birds with one stone. I got to go away but also spend time with him",
+        "",
+        ""
+    )
+
     val wordList =
         listOf(
             angry,
@@ -216,7 +396,28 @@ object Constant {
             hammer,
             cry,
             sleep,
-            knit
+            knit,
+            bravely,
+            cheerfully,
+            elegantly,
+            faithfully,
+            fortunately,
+            honestly,
+            kindly,
+            perfectly,
+            politely,
+            safely,
+            TheBestOfBothWorlds,
+            SpeakOfTheDevil,
+            SeeEyeToEye,
+            OnceInABlueMoon,
+            WhenPigsFly,
+            ToCostAnArmAndALeg,
+            APieceOfCake,
+            LetTheCatOutOfTheBag,
+            ToFeelUnderTheWeather,
+            ToKillTwoBirdsWithOneStone
         )
+
 
 }

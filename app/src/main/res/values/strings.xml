@@ -11,7 +11,7 @@
     <string name="antonyms">Antonyms</string>
 
     <string-array name="categories">
-        <item> </item>
+        <item>Choose Categories</item>
         <item>Verbs</item>
         <item>Adverbs</item>
         <item>Adjectives</item>

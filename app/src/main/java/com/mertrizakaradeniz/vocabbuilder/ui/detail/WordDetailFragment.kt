@@ -83,7 +83,7 @@ class WordDetailFragment : Fragment(R.layout.fragment_word_detail) {
 
     private fun populateUI() {
         binding.apply {
-            "Word: ${word.name}".also { tvName.text = it }
+            tvName.text = word.name
             "Definition: ${word.definition}".also { tvDefinition.text = it }
             "Categories: ${word.categories}".also { tvCategories.text = it }
             "Sentence: ${word.exampleSentence}".also { tvSentence.text = it }

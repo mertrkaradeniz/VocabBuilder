@@ -14,8 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -23,19 +23,19 @@
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="30sp"
+            android:layout_marginTop="4dp"
+            android:textSize="24sp"
             android:textAlignment="textStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Word: Get" />
+            tools:text="Get" />
 
         <TextView
             android:id="@+id/tvCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:textSize="18sp"
+            android:layout_marginBottom="4dp"
+            android:textSize="16sp"
             android:textAlignment="textStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvName"

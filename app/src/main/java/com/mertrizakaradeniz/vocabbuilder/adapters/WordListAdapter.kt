@@ -41,7 +41,7 @@ class WordListAdapter : RecyclerView.Adapter<WordListAdapter.ViewHolder>() {
         val currentWord = words[position]
 
         holder.binding.apply {
-            "Word: ${currentWord.name}".also { tvName.text = it }
+            tvName.text = currentWord.name
             "Categories: ${currentWord.categories}".also { tvCategories.text = it }
 
             root.setOnClickListener {
